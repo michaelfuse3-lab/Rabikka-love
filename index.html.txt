@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rabikka ❤️</title>
+
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#ff4d6d">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .app {
+            width: 330px;
+            background: white;
+            border-radius: 25px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        h2 {
+            color: #ff4d6d;
+        }
+
+        .bouquet {
+            font-size: 40px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%,100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .gallery img {
+            width: 90px;
+            height: 110px;
+            border-radius: 15px;
+            margin: 5px;
+            border: 3px solid #ff4d6d;
+            object-fit: cover;
+        }
+
+        .message {
+            font-size: 14px;
+            margin: 15px 0;
+            color: #444;
+        }
+
+        button {
+            background: #ff4d6d;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        .heart {
+            position: absolute;
+            color: #ff4d6d;
+            animation: float 5s linear infinite;
+        }
+
+        @keyframes float {
+            0% { bottom: -10px; opacity: 1; }
+            100% { bottom: 100%; opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="app">
+    <div class="bouquet">💐🌸🌹🌷</div>
+
+    <h2>My Rabikka ❤️</h2>
+
+    <div class="gallery">
+        <img src="image1.jpg">
+        <img src="image2.jpg">
+        <img src="image3.jpg">
+    </div>
+
+    <div class="message">
+        Rabikka, you are my forever 🌸<br>
+        Every heartbeat says your name ❤️<br>
+        Happy Valentine's Day 💕
+    </div>
+
+    <button onclick="showLove()">Tap for Surprise 💌</button>
+
+    <audio id="bgMusic" loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+
+</div>
+
+<script>
+    function showLove() {
+        alert("Rabikka ❤️ I promise to love you forever 💖");
+        document.getElementById("bgMusic").play();
+    }
+
+    setInterval(() => {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML = "❤️";
+        heart.style.left = Math.random() * 100 + "%";
+        heart.style.fontSize = Math.random() * 15 + 10 + "px";
+        document.querySelector(".app").appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 5000);
+    }, 400);
+
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('service-worker.js');
+    }
+</script>
+
+</body>
+</html>
